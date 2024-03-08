@@ -41,13 +41,12 @@
 
         <!-- Search section -->
         <div class="search">
-          <input class="search-input" type="text" id="searchInput" v-model="searchKeyword" @input="performSearch"/>
+          <input class="search-input" type="text" id="searchInput" v-model="searchKeyword" @input="performSearch" />
           <i class="fa fa-search" aria-hidden="true"></i>
         </div>
 
         <!-- Sort section -->
         <div class="sort">
-          <p>Sort by:&nbsp;&nbsp;</p>
 
           <!-- Sort by category section -->
           <div class="column category">
@@ -60,7 +59,8 @@
               Location
             </label>
             <label>
-              <input type="radio" v-model="sortCategory" id="availabilitysort" value="Availability" @change="sortSubject" />
+              <input type="radio" v-model="sortCategory" id="availabilitysort" value="Availability"
+                @change="sortSubject" />
               Availability
             </label>
             <label>
