@@ -1,0 +1,20 @@
+{
+    "name": "My After School Club PWA",
+    "short_name": "School Club",
+    "description": "This is after school club",
+    "icons": [
+        {
+            "src": "image/pwa_icon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "image/pwa_icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "background_color": "#260bca"
+}
