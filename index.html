@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <!-- Scripts -->
 <link rel="stylesheet" href="./css/style.css" />
-<!-- Vue JS version 2.7.8 -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script> <!-- Vue JS version 2.7.8 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<script src="lesson.js"></script>
-<!-- Script to load JSON data -->
+
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>After School Club</title>
-  <link rel="icon" type="image/x-icon" href="./image/web_icon.ico" />
+  <link rel="icon" type="image/x-icon" href="./favicon/web_icon.ico" />
   <link rel="manifest" href="lesson.webmanifest" />
 </head>
 
 <body>
+
   <!-- Connects Vue JS Framework-->
   <div id="app">
+
     <!-- Header Section -->
     <header>
       <div class="container1">
@@ -36,14 +38,17 @@
     <main>
       <!-- Search and Sort section -->
       <div class="search-sort-container" v-if="showProduct">
+
         <!-- Search section -->
         <div class="search">
-          <input class="search-input" type="text" id="searchInput" v-model="searchText" />
+          <input class="search-input" type="text" id="searchInput" v-model="searchKeyword" @input="performSearch"/>
           <i class="fa fa-search" aria-hidden="true"></i>
         </div>
 
         <!-- Sort section -->
         <div class="sort">
+          <p>Sort by:&nbsp;&nbsp;</p>
+
           <!-- Sort by category section -->
           <div class="column category">
             <label>
@@ -55,8 +60,7 @@
               Location
             </label>
             <label>
-              <input type="radio" v-model="sortCategory" id="availabilitysort" value="Availability"
-                @change="sortSubject" />
+              <input type="radio" v-model="sortCategory" id="availabilitysort" value="Availability" @change="sortSubject" />
               Availability
             </label>
             <label>
@@ -75,18 +79,16 @@
               <input type="radio" v-model="sortOrder" id="descending_order" value="descending" @change="sortSubject" />
               Descending
             </label>
-            <button class="button" @click="resetShowProduct">
-              Relevance
-            </button>
+            <button class="button" @click="resetShowProduct">Relevance</button>
           </div>
         </div>
       </div>
 
       <!-- Products Section -->
       <div class="subject-container" v-if="showProduct">
-        <div class="subject-box" v-for="(subject, subjectIndex) in filteredSubjects" :key="subject.id">
+        <div class="subject-box" v-for="(subject, subjectIndex) in currentSubjects" :key="subject.id">
           <figure>
-            <img v-bind:src="subject.image" />
+            <img :src="'https://webstore-rest-api-f979.onrender.com' + subject.image" alt="Subject Image" />
           </figure>
           <h2 v-text="subject.title"></h2>
           <p>Location: {{subject.location}}</p>
@@ -106,7 +108,7 @@
         <div class="Cart-page">
           <div class="cart-box" v-for="(item, key) in cart">
             <figure>
-              <img v-bind:src="item.image" />
+              <img :src="'https://webstore-rest-api-f979.onrender.com' + item.image" alt="Subject Image" />
             </figure>
             <h2 v-text="item.title"></h2>
             <p>Price: £{{item.price}}</p>
@@ -116,22 +118,20 @@
             </button>
           </div>
         </div>
-        <hr />
+        <hr>
 
         <!-- Checkout Section -->
         <div class="checkout-container">
           <div class="checkout-box">
             <label for="name">Name:</label>
-            <input type="text" id="name" v-model="name" @input="checkInputs" />
+            <input type="text" id="name" v-model="name" @input="checkInputs">
           </div>
           <div class="checkout-box">
             <label for="phone">Phone:</label>
-            <input type="text" id="phone" v-model="phone" @input="checkInputs" />
+            <input type="text" id="phone" v-model="phone" @input="checkInputs">
           </div>
           <div class="checkout-box">
-            <button id="checkout" :disabled="!isCheckoutEnabled" @click="checkout">
-              Checkout
-            </button>
+            <button id="checkout" :disabled="!isCheckoutEnabled" @click="checkout">Checkout</button>
           </div>
         </div>
       </div>
@@ -139,7 +139,6 @@
   </div>
 
   <!-- Script that connects javascript -->
-  <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
   <script src="./javascript/app.js"></script>
 </body>
 
