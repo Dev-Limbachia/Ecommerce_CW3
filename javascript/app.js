@@ -298,9 +298,5 @@ new Vue({
       };
     },
 
-    currentSubjects: function () {
-      return this.searchKeyword ? this.searchResults : this.subjects;
-    },
-
   },
 });
