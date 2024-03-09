@@ -150,6 +150,11 @@
   transition: background-color 0.3s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-right: 10px;
+  text-decoration: none;
+}
+
+.test-button i {
+  margin-right: 10px;
 }
 
 .test-button:hover {

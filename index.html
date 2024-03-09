@@ -39,18 +39,44 @@
           <i class="fa fa-search" aria-hidden="true"></i>
         </div>
 
+        <!-- Sort section -->
         <div class="sort">
+
+          <!-- Sort by category section -->
           <div class="column category">
-            <!-- Sort by category section -->
+            <label>
+              <input type="radio" v-model="sortCategory" id="titlesort" value="Title" @change="sortSubject" />
+              Title
+            </label>
+            <label>
+              <input type="radio" v-model="sortCategory" id="locationsort" value="Location" @change="sortSubject" />
+              Location
+            </label>
+            <label>
+              <input type="radio" v-model="sortCategory" id="availabilitysort" value="Availability"
+                @change="sortSubject" />
+              Availability
+            </label>
+            <label>
+              <input type="radio" v-model="sortCategory" id="pricesort" value="Price" @change="sortSubject" />
+              Price
+            </label>
           </div>
 
+          <!-- Sort by order section -->
           <div class="column order">
-            <!-- Sort by order section -->
+            <label>
+              <input type="radio" v-model="sortOrder" id="ascending_order" value="ascending" @change="sortSubject" />
+              Ascending
+            </label>
+            <label>
+              <input type="radio" v-model="sortOrder" id="descending_order" value="descending" @change="sortSubject" />
+              Descending
+            </label>
             <button class="button" @click="resetShowProduct">Relevance</button>
           </div>
         </div>
       </div>
-
       <!-- Test Console Button -->
       <div class="test-console-container">
         <button class="button test-console" @click="toggleTestConsole">
@@ -70,7 +96,7 @@
           Reload Page
         </button>
         <button class="test-button" @click="unregisterAllServiceWorkers">
-          <i class="fas fa-uniregistry"></i>
+          <i class="fab fa-uniregistry"></i>
           Unregister Service Worker
         </button>
         <button class="test-button" @click="deleteAllCaches">
