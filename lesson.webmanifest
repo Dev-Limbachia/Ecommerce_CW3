@@ -28,7 +28,7 @@
         "src": "image/pwa_icon(320x320).png",
         "sizes": "320x320",
         "type": "image/png",
-        "form_factor": "handheld"
+        "form_factor": "narrow"
       }
     ]
   }
