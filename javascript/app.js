@@ -1,8 +1,10 @@
 new Vue({
   el: "#app",
   data: {
+    url: 'https://webstore-rest-api-f979.onrender.com/lessons',
+    viewTestConsole: false,
     sitename: "After School Club",
-    showProduct: true, // default
+    showProduct: true, // default 
     subjects: [], // JSON data stored in an array
     cart: [], // array to store items in shopping cart
     sortPrice: "Price", // Default sorting type - price
@@ -276,6 +278,30 @@ new Vue({
           this.showProduct = true;
         });
     },
+
+    // Test Console
+    toggleTestConsole: function () {
+      this.viewTestConsole = !this.viewTestConsole;
+    },
+    deleteAllCaches() {
+      caches.keys().then(function (names) {
+        for (let name of names)
+          caches.delete(name);
+      });
+      console.log("All Caches Deleted");
+    },
+    unregisterAllServiceWorkers() {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+          registration.unregister()
+        }
+      });
+      console.log("ServiceWorkers Unregistered");
+    },
+    reloadPage() {
+      window.location.reload(true);
+    },
+
   },
 
   computed: {

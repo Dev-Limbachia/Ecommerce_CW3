@@ -106,56 +106,6 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
-
- /* Style for the Test Console button */
-.test-console-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.test-console {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.test-console:hover {
-  background-color: #0056b3;
-}
-
-/* Style for the Test Console section */
-.view-TestConsole {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.test-button {
-  display: flex;
-  align-items: center;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-right: 10px;
-}
-
-.test-button:hover {
-  background-color: #0056b3;
-}
-
   
   /* Cart button */
   .cart {

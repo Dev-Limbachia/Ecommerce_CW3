@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Scripts -->
+<link rel="stylesheet" href="./css/style.css" />
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script> <!-- Vue JS version 2.7.8 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>After School Club</title>
   <link rel="icon" type="image/x-icon" href="./image/web_icon.ico" />
   <link rel="manifest" href="lesson.webmanifest" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
 </head>
 
 <body>
 
+  <!-- Connects Vue JS Framework-->
   <div id="app">
 
     <!-- Header Section -->
@@ -34,49 +38,50 @@
     <main>
       <!-- Search and Sort section -->
       <div class="search-sort-container" v-if="showProduct">
+
+        <!-- Search section -->
         <div class="search">
           <input class="search-input" type="text" id="searchInput" v-model="searchKeyword" @input="performSearch" />
           <i class="fa fa-search" aria-hidden="true"></i>
         </div>
 
+        <!-- Sort section -->
         <div class="sort">
+
+          <!-- Sort by category section -->
           <div class="column category">
-            <!-- Sort by category section -->
+            <label>
+              <input type="radio" v-model="sortCategory" id="titlesort" value="Title" @change="sortSubject" />
+              Title
+            </label>
+            <label>
+              <input type="radio" v-model="sortCategory" id="locationsort" value="Location" @change="sortSubject" />
+              Location
+            </label>
+            <label>
+              <input type="radio" v-model="sortCategory" id="availabilitysort" value="Availability"
+                @change="sortSubject" />
+              Availability
+            </label>
+            <label>
+              <input type="radio" v-model="sortCategory" id="pricesort" value="Price" @change="sortSubject" />
+              Price
+            </label>
           </div>
 
+          <!-- Sort by order section -->
           <div class="column order">
-            <!-- Sort by order section -->
+            <label>
+              <input type="radio" v-model="sortOrder" id="ascending_order" value="ascending" @change="sortSubject" />
+              Ascending
+            </label>
+            <label>
+              <input type="radio" v-model="sortOrder" id="descending_order" value="descending" @change="sortSubject" />
+              Descending
+            </label>
             <button class="button" @click="resetShowProduct">Relevance</button>
           </div>
         </div>
-      </div>
-
-      <!-- Test Console Button -->
-      <div class="test-console-container">
-        <button class="button test-console" @click="toggleTestConsole">
-          Test Console
-        </button>
-      </div>
-
-      <!-- Test Console Section -->
-      <div class="view-TestConsole" v-if="viewTestConsole">
-        <!-- Console options -->
-        <a :href="url" target="_blank" class="test-button">
-          <i class="fas fa-check-circle"></i>
-          Accept Exception
-        </a>
-        <button class="test-button" @click="reloadPage">
-          <i class="fas fa-sync-alt"></i>
-          Reload Page
-        </button>
-        <button class="test-button" @click="unregisterAllServiceWorkers">
-          <i class="fas fa-uniregistry"></i>
-          Unregister Service Worker
-        </button>
-        <button class="test-button" @click="deleteAllCaches">
-          <i class="fas fa-trash"></i>
-          Delete All Cache
-        </button>
       </div>
 
       <!-- Products Section -->
@@ -133,6 +138,7 @@
     </main>
   </div>
 
+  <!-- Script that connects javascript -->
   <script src="./javascript/app.js"></script>
 </body>
 
