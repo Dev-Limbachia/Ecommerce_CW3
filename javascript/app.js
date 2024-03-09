@@ -107,15 +107,14 @@ new Vue({
       }
     },
 
+    // Method to show Cart page 
     showCart() {
       if (this.cartItemCount == 0) {
         this.showProduct = true;
-        this.viewTestConsole = false; // Hide test console section when cart is shown
       } else {
-        this.showProduct = !this.showProduct;
-        this.viewTestConsole = false; // Hide test console section when cart is shown
+        this.showProduct = this.showProduct ? false : true;
       }
-    },    
+    },
 
     resetShowProduct() {
       // Reset the sorting options to default
