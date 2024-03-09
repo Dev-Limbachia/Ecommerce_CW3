@@ -18,17 +18,17 @@
     "display": "fullscreen",
     "background_color": "#007bff",
     "screenshots": [
-        {
-            "src": "image/pwa_icon(512x512).png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "form_factor": "web"
-        },
-        {
-            "src": "image/pwa_icon(192x192).png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "form_factor": "handheld"
-        }
+      {
+        "src": "image/pwa_icon(512x512).png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "form_factor": "wide"
+      },
+      {
+        "src": "image/pwa_icon(320x320).png",
+        "sizes": "320x320",
+        "type": "image/png",
+        "form_factor": "handheld"
+      }
     ]
-}
+  }
