@@ -132,14 +132,12 @@
 /* Style for the Test Console section */
 .view-TestConsole {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 20px;
 }
 
 .test-button {
-  display: flex;
-  align-items: center;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -149,7 +147,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-right: 10px;
+  margin: 5px;
   text-decoration: none;
 }
 
@@ -160,6 +158,13 @@
 .test-button:hover {
   background-color: #0056b3;
 }
+
+@media only screen and (max-width: 786px) {
+  .test-button {
+    width: 45%; /* Adjust button width for smaller screens */
+  }
+}
+
 
   
   /* Cart button */
