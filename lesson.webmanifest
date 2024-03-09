@@ -16,7 +16,7 @@
     ],
     "start_url": "index.html",
     "display": "fullscreen",
-    "background_color": "#260bca",
+    "background_color": "#007bff",
     "screenshots": [
       {
         "src": "image/pwa_icon(512x512).png",
