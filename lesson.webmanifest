@@ -16,5 +16,13 @@
     ],
     "start_url": "index.html",
     "display": "fullscreen",
-    "background_color": "#260bca"
-}
+    "background_color": "#260bca",
+    "screenshots": [
+      {
+        "src": "image/pwa_icon(512x512).png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "form_factor": "wide"
+      }
+    ]
+  }
