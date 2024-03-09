@@ -113,6 +113,7 @@ new Vue({
         this.showProduct = true;
       } else {
         this.showProduct = this.showProduct ? false : true;
+        this.viewTestConsole = false;
       }
     },
 
