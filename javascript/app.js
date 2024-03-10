@@ -167,92 +167,72 @@ new Vue({
     },
 
     // Updated checkout method to include lesson quantity updates
-    async checkout() {
+        async checkout() {
       if (this.isCheckoutEnabled) {
-        // Create an array to store lesson IDs from the cart
-        const lessonIDs = this.cart.map(item => item.id);
-
-        // Prepare the order data to send in the POST request
         const orderData = {
           name: this.name,
           phoneNumber: this.phone,
-          lessons: this.cart, // Send the cart data directly
+          lessons: this.cart,
         };
-
-        // Send a POST request to the server to save the order
+    
         try {
-          const response = await fetch('https://webstore-rest-api-f979.onrender.com/orders', {
+          const orderResponse = await fetch('https://webstore-rest-api-f979.onrender.com/orders', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(orderData),
           });
-
-          if (response.ok) {
-            // Handle the response from the server
-            const data = await response.json();
-            console.log('Order submitted:', data);
-            this.confirmationText = 'Order submitted successfully!';
-            this.orderSubmitted = true;
-
-            // Reset the form and cart
-            this.name = '';
-            this.phone = '';
-            this.cart = [];
-            this.isCheckoutEnabled = false;
-            this.showProduct = true;
-            this.searchKeyword = "";
-            // Refetch all subjects to reset the list
-            this.fetchSubjects(); // Call fetchSubjects to reload the full list of subjects
-
-            // Call the function to update lesson quantities
-            this.updateLessonQuantities(this.cart);
-          } else {
-            // Handle error response from the server
-            console.error('Error submitting order:', response.statusText);
-            this.confirmationText = 'Error submitting order. Please try again.';
-            this.orderSubmitted = true;
+    
+          if (!orderResponse.ok) {
+            throw new Error('Failed to submit order');
           }
+
+          // Call the function to update lesson quantities
+          await this.updateStock();
+    
+          console.log('Order submitted successfully!');
+          this.confirmationText = 'Order submitted successfully!';
+          this.orderSubmitted = true;
+          this.resetForm();
+    
         } catch (error) {
-          console.error('Error submitting order:', error);
+          console.error('Error submitting order:', error.message);
           this.confirmationText = 'Error submitting order. Please try again.';
           this.orderSubmitted = true;
         }
       }
     },
-
-    // Function to update lesson quantities
-    async updateLessonQuantities(cart) {
-      // Construct an array of lessons to update (lessonId and quantity to decrement)
-      const lessonsToUpdate = cart.map(item => ({
-        lessonId: item.id,
-        quantity: item.quantity,
-      }));
-
-      // Send a PUT request to update lesson quantities
+    
+    async updateStock() {
       try {
         const response = await fetch('https://webstore-rest-api-f979.onrender.com/updateLessons', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ lessonsToUpdate: this.cart }), // Send the cart data with quantities to update
+          body: JSON.stringify(this.cart),
         });
-
-        if (response.ok) {
-          // Handle the success response from the server
-          const data = await response.json();
-          console.log('Lesson quantities updated successfully:', data);
-        } else {
-          // Handle error response from the server
-          console.error('Error updating lesson quantities:', response.statusText);
+    
+        if (!response.ok) {
+          throw new Error('Failed to update lesson quantities');
         }
+    
+        console.log('Lesson quantities updated successfully!');
       } catch (error) {
-        console.error('Error updating lesson quantities:', error);
+        console.error('Error updating lesson quantities:', error.message);
+        // Handle error as needed
       }
     },
-
+    
+    resetForm() {
+      this.name = '';
+      this.phone = '';
+      this.cart = [];
+      this.isCheckoutEnabled = false;
+      this.showProduct = true;
+    },
+    
     performSearch() {
       // Perform search on the server
       fetch(`https://webstore-rest-api-f979.onrender.com/search?q=${this.searchKeyword}`)
