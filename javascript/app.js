@@ -231,7 +231,6 @@ new Vue({
       this.cart = [];
       this.isCheckoutEnabled = false;
       this.showProduct = true;
-      window.location.reload(true);
     },
 
     performSearch() {
